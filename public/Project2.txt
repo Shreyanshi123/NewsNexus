@@ -1,0 +1,186 @@
+#22 Introduction to Class based Components
+
+here states and props are little different
+ {this.c}
+
+   c= "John"
+
+#23 NewsMonkey
+NEWSAPI KEY =733d63120c1e4a95b6cbe9ef97c8adc1
+
+// render is one of the life cycle methods of react\
+ newcomponent > - This is a news component containing many newsitem
+ newcomponent contains newsitems
+ newsitems contain some details
+ newsdescription for the particular news
+
+ kabhi bhi constructor likhna hai to supper class ko call karna parega in derived class
+ constructor(){
+        //  super constructor in derived class before accessing 'this' 
+        super()
+        console.log("News Item was created")
+    }
+    // displayed six times becaus of strictmode 
+
+    <div className="row">
+        <div className="col md-4">
+        <NewsItem title={this.articles[0].title} description={this.articles[0].description} imageUrl={this.articles[0].urlToImage} newsUrl="Todo"/>
+        </div>
+        </div>
+
+        kitne bhi md-4 wala daal do apne aapna autoalign kar lenge sab 
+
+News.js:140 Warning: Each child in a list should have a unique "key" prop.
+
+Check the render method of `News`. See https://reactjs.org/link/warning-keys for more information.
+    at div
+    at News (http://localhost:3000/static/js/bundle.js:265:5)
+    at div
+    at App (http://localhost:3000/static/js/bundle.js:30:1)
+
+    map func ka error hai
+
+{this.state.articles.map((article)=>{
+        return(
+        <div className="col md-4">
+        <NewsItem title={article.title} description={article.description} imageUrl={article.urlToImage} newsUrl="Todo"/>
+        </div>
+        )
+        })
+ <div className="col md-4">
+        <NewsItem key ={url} title={title} description={description} imageUrl={urlToImage} newsUrl={url}/>
+        </div>
+NewsItem nhi rrturn kr rahe ho to jisko retrun kar rahe ho like div ko usme key pass karan h
+href={newsUrl} target="_blank"
+
+nahi tab meh khul jata hai 
+
+ articles=[
+        {
+          "source": { "id": "abc-news-au", "name": "ABC News (AU)" },
+          "author": "ABC News",
+          "title": "Ian Redpath, stoic Australian Test opener and hall of fame member, dies aged 83",
+          "description": "Ian Redpath, the unflappable opener of 66 Tests and member of the Australian cricket hall of fame, dies aged 83.",
+          "url": "https://www.abc.net.au/news/2024-12-01/ian-redpath-stoic-australian-test-opener-dies-aged-83/104670220",
+          "urlToImage": "https://live-production.wcms.abc-cdn.net.au/944bfc618e23ed07333a67f651e89efb?impolicy=wcms_watermark_news&cropH=2813&cropW=5000&xPos=0&yPos=283&width=862&height=485&imformat=generic",
+          "publishedAt": "2024-12-01T06:02:07Z",
+          "content": "Australian cricket is mourning the loss of one its last old-school stonewall openers, with former Test batsman Ian Redpath dying at 83.\r\nA member of Australian cricket's hall of fame, Redpath was a f… [+4355 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+          "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+          "publishedAt": "2020-04-27T11:41:47Z",
+          "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+          "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+          "publishedAt": "2020-03-30T15:26:05Z",
+          "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        },
+        {
+          "source": { "id": "abc-news-au", "name": "ABC News (AU)" },
+          "author": "ABC News",
+          "title": "Ian Redpath, stoic Australian Test opener and hall of fame member, dies aged 83",
+          "description": "Ian Redpath, the unflappable opener of 66 Tests and member of the Australian cricket hall of fame, dies aged 83.",
+          "url": "https://www.abc.net.au/news/2024-12-01/ian-redpath-stoic-australian-test-opener-dies-aged-83/104670220",
+          "urlToImage": "https://live-production.wcms.abc-cdn.net.au/944bfc618e23ed07333a67f651e89efb?impolicy=wcms_watermark_news&cropH=2813&cropW=5000&xPos=0&yPos=283&width=862&height=485&imformat=generic",
+          "publishedAt": "2024-12-01T06:02:07Z",
+          "content": "Australian cricket is mourning the loss of one its last old-school stonewall openers, with former Test batsman Ian Redpath dying at 83.\r\nA member of Australian cricket's hall of fame, Redpath was a f… [+4355 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+          "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+          "publishedAt": "2020-04-27T11:41:47Z",
+          "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+          "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+          "publishedAt": "2020-03-30T15:26:05Z",
+          "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        },
+        {
+          "source": { "id": "abc-news-au", "name": "ABC News (AU)" },
+          "author": "ABC News",
+          "title": "Ian Redpath, stoic Australian Test opener and hall of fame member, dies aged 83",
+          "description": "Ian Redpath, the unflappable opener of 66 Tests and member of the Australian cricket hall of fame, dies aged 83.",
+          "url": "https://www.abc.net.au/news/2024-12-01/ian-redpath-stoic-australian-test-opener-dies-aged-83/104670220",
+          "urlToImage": "https://live-production.wcms.abc-cdn.net.au/944bfc618e23ed07333a67f651e89efb?impolicy=wcms_watermark_news&cropH=2813&cropW=5000&xPos=0&yPos=283&width=862&height=485&imformat=generic",
+          "publishedAt": "2024-12-01T06:02:07Z",
+          "content": "Australian cricket is mourning the loss of one its last old-school stonewall openers, with former Test batsman Ian Redpath dying at 83.\r\nA member of Australian cricket's hall of fame, Redpath was a f… [+4355 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+          "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+          "publishedAt": "2020-04-27T11:41:47Z",
+          "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+          "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+          "publishedAt": "2020-03-30T15:26:05Z",
+          "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        },
+        {
+          "source": { "id": "abc-news-au", "name": "ABC News (AU)" },
+          "author": "ABC News",
+          "title": "Ian Redpath, stoic Australian Test opener and hall of fame member, dies aged 83",
+          "description": "Ian Redpath, the unflappable opener of 66 Tests and member of the Australian cricket hall of fame, dies aged 83.",
+          "url": "https://www.abc.net.au/news/2024-12-01/ian-redpath-stoic-australian-test-opener-dies-aged-83/104670220",
+          "urlToImage": "https://live-production.wcms.abc-cdn.net.au/944bfc618e23ed07333a67f651e89efb?impolicy=wcms_watermark_news&cropH=2813&cropW=5000&xPos=0&yPos=283&width=862&height=485&imformat=generic",
+          "publishedAt": "2024-12-01T06:02:07Z",
+          "content": "Australian cricket is mourning the loss of one its last old-school stonewall openers, with former Test batsman Ian Redpath dying at 83.\r\nA member of Australian cricket's hall of fame, Redpath was a f… [+4355 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+          "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+          "publishedAt": "2020-04-27T11:41:47Z",
+          "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+          "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
+          "author": null,
+          "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+          "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+          "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+          "publishedAt": "2020-03-30T15:26:05Z",
+          "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        }
+      ]
+
+
+      ?page paramtere
+
+      first constructor runs
+      then render method
+      then componentdidmount
